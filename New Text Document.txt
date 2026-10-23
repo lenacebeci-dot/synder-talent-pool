@@ -29,11 +29,10 @@ window.TALENT_POOL_CONFIG = {
     "Operations",
     "Other"
   ],
-  SENIORITY: ["Intern / Student", "Junior", "Mid-level", "Senior", "Lead / Principal", "Head / Director", "Executive"],
-  EXPERIENCE_DOMAINS: ["B2B SaaS", "Fintech or payments", "Accounting or bookkeeping", "Ecommerce", "Startups (under 200 people)", "Remote, international teams"],
+  SENIORITY: ["Less than 1 year", "1–3 years", "3–5 years", "5+ years"],
   ENGLISH_LEVELS: ["Native or bilingual", "Fluent (C1–C2)", "Professional (B2)", "Conversational (B1 or below)"],
   EMPLOYMENT_TYPES: ["Full-time", "Part-time", "Contract / freelance", "Internship"],
-  WORK_SETUP: ["Remote", "Hybrid", "On-site", "Open to relocation"],
+  WORK_SETUP: ["Remote", "Hybrid", "On-site"],
   AVAILABILITY: ["Immediately", "Within 1 month", "1–3 months", "3+ months", "Just exploring"],
   REFERRAL_SOURCES: ["LinkedIn", "Synder website", "A Synder employee", "Friend or colleague", "Job board", "Event or webinar", "Other"]
 };
