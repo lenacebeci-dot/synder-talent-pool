@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join the Synder talent pool</title>
+  <meta name="description" content="Don’t see the right role at Synder yet? Leave your CV and we’ll reach out when something fits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="public-page">
+  <header class="site-header">
+    <a href="https://synder.com/" id="logo-link" aria-label="Synder home"></a>
+    <a class="back" href="https://synder.com/careers/">Open positions</a>
+  </header>
+
+  <main class="public">
+    <section class="intro">
+      <h1>Don’t see the right role yet? Leave your CV anyway.</h1>
+      <p class="lede">We’re building accounting automation used by thousands of businesses and accounting firms. When a role opens that fits you, we look here first, before we post it anywhere else.</p>
+      <ol class="steps">
+        <li><strong>Tell us about yourself</strong><span>About three minutes: your CV, your experience and what you’re looking for.</span></li>
+        <li><strong>A real person reads it</strong><span>Every profile is reviewed and tagged by skills and interests. No bots deciding for us.</span></li>
+        <li><strong>We reach out when there’s a fit</strong><span>No spam. You’ll hear from us only about roles that match what you told us.</span></li>
+      </ol>
+      <p class="tagline" id="tagline"></p>
+    </section>
+
+    <section class="card" aria-live="polite">
+      <form id="pool-form" novalidate>
+        <h2>Join the talent pool</h2>
+        <p class="sub-lede">Fields marked optional can be skipped.</p>
+        <div id="form-error" class="alert error hidden" role="alert"></div>
+
+        <fieldset>
+          <legend>About you</legend>
+          <div class="field">
+            <label for="full_name">Full name</label>
+            <input type="text" id="full_name" name="full_name" autocomplete="name" required maxlength="200">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required maxlength="320">
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="50">
+            </div>
+          </div>
+          <div class="field">
+            <label for="location">Where are you based?</label>
+            <input type="text" id="location" name="location" placeholder="City, country" autocomplete="address-level2" required maxlength="200">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="linkedin_url">LinkedIn <span class="optional">(optional)</span></label>
+              <input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://linkedin.com/in/…" maxlength="500">
+            </div>
+            <div class="field">
+              <label for="portfolio_url">Portfolio or GitHub <span class="optional">(optional)</span></label>
+              <input type="url" id="portfolio_url" name="portfolio_url" placeholder="https://…" maxlength="500">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your experience</legend>
+          <div class="row">
+            <div class="field">
+              <label for="role_area">Area</label>
+              <select id="role_area" name="role_area" required></select>
+            </div>
+            <div class="field">
+              <label for="seniority">Years of experience</label>
+              <select id="seniority" name="seniority" required></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="english_level">English level</label>
+            <select id="english_level" name="english_level" required></select>
+            <div class="hint">Our team works across many countries, and English is our working language.</div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you’re looking for</legend>
+          <div class="row">
+            <div class="field">
+              <label for="employment_type">Type of work</label>
+              <select id="employment_type" name="employment_type" required></select>
+            </div>
+            <div class="field">
+              <label for="work_setup">Work setup</label>
+              <select id="work_setup" name="work_setup" required></select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="availability">When could you start?</label>
+              <select id="availability" name="availability" required></select>
+            </div>
+            <div class="field">
+              <label for="salary_expectation">Salary expectation <span class="optional">(optional)</span></label>
+              <input type="text" id="salary_expectation" name="salary_expectation" placeholder="e.g. €4,000 / month gross" maxlength="100">
+            </div>
+          </div>
+          <div class="field">
+            <label for="referral_source">How did you hear about us? <span class="optional">(optional)</span></label>
+            <select id="referral_source" name="referral_source"></select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your CV</legend>
+          <div class="field">
+            <label class="dropzone" id="dropzone" for="cv">
+              <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+              <span id="drop-text">Drop your CV here or <u>choose a file</u></span>
+              <div class="hint">PDF or Word, up to 10 MB</div>
+            </label>
+          </div>
+          <!-- Honeypot: humans never see or fill this -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="consent">
+              <input type="checkbox" id="consent" name="consent" required>
+              <span id="consent-text"></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button class="btn block" type="submit" id="submit-btn">Join the talent pool</button>
+      </form>
+
+      <div id="success" class="success hidden">
+        <div class="mark" aria-hidden="true">✓</div>
+        <h2>You’re in the talent pool</h2>
+        <p>Thanks for sharing your profile. We’ll get in touch when a role opens that fits what you’re looking for.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script>
+  (function () {
+    const cfg = window.TALENT_POOL_CONFIG;
+    const db = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+    const $ = (id) => document.getElementById(id);
+    const MAX_BYTES = 10 * 1024 * 1024;
+    const ALLOWED = /\.(pdf|docx?)$/i;
+
+    // ---- Branding from config.js ----
+    document.title = "Join the " + cfg.COMPANY_NAME + " talent pool";
+    const logoLink = $("logo-link");
+    if (cfg.LOGO_URL) {
+      const img = new Image();
+      img.className = "logo"; img.alt = cfg.COMPANY_NAME; img.src = cfg.LOGO_URL;
+      img.onerror = () => { logoLink.className = "logo-text"; logoLink.textContent = cfg.COMPANY_NAME; };
+      logoLink.append(img);
+    } else { logoLink.className = "logo-text"; logoLink.textContent = cfg.COMPANY_NAME; }
+    $("tagline").textContent = cfg.COMPANY_TAGLINE || "";
+
+    // ---- Options ----
+    fillSelect("role_area", cfg.ROLE_AREAS);
+    fillSelect("seniority", cfg.SENIORITY);
+    fillSelect("english_level", cfg.ENGLISH_LEVELS);
+    fillSelect("employment_type", cfg.EMPLOYMENT_TYPES);
+    fillSelect("work_setup", cfg.WORK_SETUP);
+    fillSelect("availability", cfg.AVAILABILITY);
+    fillSelect("referral_source", cfg.REFERRAL_SOURCES);
+
+    const consent = $("consent-text");
+    consent.append(
+      "I agree that " + cfg.COMPANY_NAME + " may store my details and CV for up to " +
+      cfg.RETENTION_MONTHS + " months to contact me about future roles. I can ask for them to be deleted at any time. "
+    );
+    const pp = document.createElement("a");
+    pp.href = cfg.PRIVACY_POLICY_URL; pp.target = "_blank"; pp.rel = "noopener";
+    pp.textContent = "Privacy policy";
+    consent.append(pp);
+
+    function fillSelect(id, items) {
+      const el = $(id);
+      el.innerHTML = "";
+      el.append(new Option("Choose…", ""));
+      items.forEach((v) => el.append(new Option(v, v)));
+    }
+
+    // ---- CV picker + drag and drop ----
+    const cvInput = $("cv"), dz = $("dropzone");
+    cvInput.addEventListener("change", showFile);
+    ["dragenter", "dragover"].forEach((t) => dz.addEventListener(t, (e) => { e.preventDefault(); dz.classList.add("drag"); }));
+    ["dragleave", "drop"].forEach((t) => dz.addEventListener(t, () => dz.classList.remove("drag")));
+    dz.addEventListener("drop", (e) => {
+      e.preventDefault();
+      if (e.dataTransfer.files.length) { cvInput.files = e.dataTransfer.files; showFile(); }
+    });
+    function showFile() {
+      const f = cvInput.files[0];
+      const t = $("drop-text");
+      t.textContent = "";
+      if (!f) { t.innerHTML = "Drop your CV here or <u>choose a file</u>"; return; }
+      const s = document.createElement("span"); s.className = "file-name"; s.textContent = f.name;
+      t.append(s, " · change");
+    }
+
+    // ---- Submit ----
+    const form = $("pool-form"), btn = $("submit-btn"), errBox = $("form-error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideError();
+
+      if (form.website.value) { done(); return; }  // bot filled the honeypot
+
+      const problem = validate();
+      if (problem) { showError(problem); return; }
+
+      btn.disabled = true; btn.textContent = "Sending…";
+      try {
+        const file = cvInput.files[0];
+        const id = crypto.randomUUID();
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-80);
+        const path = id + "/" + safeName;
+
+        const up = await db.storage.from("cvs").upload(path, file, { contentType: file.type || undefined });
+        if (up.error) throw new Error("upload");
+
+        const val = (n) => (form[n].value || "").trim() || null;
+        const ins = await db.from("candidates").insert({
+          id,
+          full_name: val("full_name"),
+          email: val("email"),
+          phone: val("phone"),
+          location: val("location"),
+          linkedin_url: val("linkedin_url"),
+          portfolio_url: val("portfolio_url"),
+          role_area: val("role_area"),
+          seniority: val("seniority"),
+          english_level: val("english_level"),
+          employment_type: val("employment_type"),
+          work_setup: val("work_setup"),
+          availability: val("availability"),
+          salary_expectation: val("salary_expectation"),
+          referral_source: val("referral_source"),
+          cv_path: path,
+          consent_given: true
+        });
+        if (ins.error) throw new Error("insert");
+        done();
+      } catch (err) {
+        console.error(err);
+        showError(err.message === "upload"
+          ? "Your CV didn’t upload. Check it’s a PDF or Word file under 10 MB and try again."
+          : "Your details weren’t saved. Check your connection and try again.");
+        btn.disabled = false; btn.textContent = "Join the talent pool";
+      }
+    });
+
+    function validate() {
+      const required = [
+        ["full_name", "your full name"], ["email", "your email"], ["location", "where you’re based"],
+        ["role_area", "an area"], ["seniority", "your years of experience"], ["english_level", "your English level"],
+        ["employment_type", "a type of work"], ["work_setup", "a work setup"], ["availability", "when you could start"]
+      ];
+      for (const [n, label] of required) {
+        if (!form[n].value.trim()) { form[n].focus(); return "Add " + label + " to continue."; }
+      }
+      if (!form.email.checkValidity()) { form.email.focus(); return "Enter a valid email address, like name@example.com."; }
+      for (const n of ["linkedin_url", "portfolio_url"]) {
+        const v = form[n].value.trim();
+        if (v && !/^https?:\/\//i.test(v)) { form[n].focus(); return "Links need to start with https://"; }
+      }
+      const f = cvInput.files[0];
+      if (!f) return "Attach your CV to continue.";
+      if (!ALLOWED.test(f.name)) return "Your CV needs to be a PDF or Word file.";
+      if (f.size > MAX_BYTES) return "Your CV is larger than 10 MB. Try exporting a smaller PDF.";
+      if (!form.consent.checked) { form.consent.focus(); return "Tick the consent box so we can store your details."; }
+      return null;
+    }
+    function showError(msg) { errBox.textContent = msg; errBox.classList.remove("hidden"); errBox.scrollIntoView({ block: "center", behavior: "smooth" }); }
+    function hideError() { errBox.classList.add("hidden"); }
+    function done() { form.classList.add("hidden"); $("success").classList.remove("hidden"); }
+  })();
+  </script>
+</body>
+</html>
